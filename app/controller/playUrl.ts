@@ -3,9 +3,9 @@ const BaseController = require('./BaseController')
 export default class PlayUrl extends BaseController {
   async index () {
     const { ctx, service } = this
-    const { mid, format } = ctx.query
+    const { rid, format } = ctx.query
 
-    if (!mid) {
+    if (!rid) {
       ctx.body = {
         code: 500,
         message: '参数错误',
@@ -15,7 +15,7 @@ export default class PlayUrl extends BaseController {
       return false
     }
 
-    const res = await service.playUrl.getPlayUrl(mid, format)
+    const res = await service.playUrl.getPlayUrl(rid, format)
 
     ctx.body = res
   }
